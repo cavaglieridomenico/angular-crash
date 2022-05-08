@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent,
     HeaderComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule
