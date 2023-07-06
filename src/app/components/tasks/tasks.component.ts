@@ -13,6 +13,6 @@ export class TasksComponent implements OnInit {
   tasks: Task[] = [];
 
   ngOnInit(): void {
-    this.tasks = this.taskService.getTasks();
+    this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
   }
 }
