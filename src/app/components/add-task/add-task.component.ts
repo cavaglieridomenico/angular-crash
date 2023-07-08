@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Task } from 'src/app/Task';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-add-task',
@@ -8,7 +9,11 @@ import { Task } from 'src/app/Task';
   styleUrls: ['./add-task.component.css'],
 })
 export class AddTaskComponent {
-  constructor() {}
+  showAddTask: boolean = false;
+
+  constructor(private uiService: UiService) {
+    this.uiService.onToggle().subscribe((value) => (this.showAddTask = value));
+  }
 
   @Output() onAddTask: EventEmitter<Task> = new EventEmitter();
   @ViewChild('addTaskForm') addTaskForm: NgForm;
