@@ -24,6 +24,7 @@ export class AddTaskComponent {
   onSubmit() {
     if (!this.text || !this.day) {
       alert('Please, all fields are required.');
+      return;
     }
 
     const newTask: Task = {
