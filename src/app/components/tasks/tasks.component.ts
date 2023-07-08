@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Task } from 'src/app/Task';
 import { TaskService } from 'src/app/services/task.service';
 
@@ -27,6 +27,14 @@ export class TasksComponent implements OnInit {
   toggleReminder(param: Task) {
     this.taskService
       .setReminder(param)
+      .subscribe(() =>
+        this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks))
+      );
+  }
+
+  addTask(param: Task) {
+    this.taskService
+      .addTask(param)
       .subscribe(() =>
         this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks))
       );
